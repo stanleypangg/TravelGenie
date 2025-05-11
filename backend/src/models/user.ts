@@ -16,3 +16,8 @@ export interface PublicUser {
     email: String,
     createdAt: Date
 };
+
+export interface UserLogin {
+    token: String,
+    user: PublicUser
+};

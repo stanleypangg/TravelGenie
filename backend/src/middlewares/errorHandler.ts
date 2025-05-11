@@ -1,4 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
+import { AppError } from "../errors/AppError";
 
 export function errorHandler(
     err: any,
@@ -6,9 +7,11 @@ export function errorHandler(
     res: Response,
     next: NextFunction
 ) {
-    console.error(err);
+    if (err instanceof AppError) {
+        return res.status(err.status).json({ error: err.message });
+    }
 
-    // default handler
+    console.log('Unhandled Error!');
     res.status(err.status || 500).json({
         error: err.message || "500 Interal Error"
     });

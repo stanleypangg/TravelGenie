@@ -9,3 +9,12 @@ export const RegisterSchema = z
     .strict(); // no extra keys
 
 export type RegisterDTO = z.infer<typeof RegisterSchema>;
+
+export const LoginSchema = z
+    .object({
+        username: z.string(),
+        password: z.string(),
+    })
+    .strict();
+
+export type LoginDTO = z.infer<typeof LoginSchema>;
