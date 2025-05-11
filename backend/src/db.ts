@@ -11,7 +11,7 @@ export async function connectToDatabase() {
   if (db) return db;              // reuse existing connection
   client = new MongoClient(uri);
   await client.connect();         // establish connection
-  db = client.db('travelgenie');
+  db = client.db('travelsense');
   console.log('✅ MongoDB connected (native driver)');
   return db;
 }

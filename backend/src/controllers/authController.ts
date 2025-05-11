@@ -1,15 +1,14 @@
-import { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
 import { RegisterDTO } from "../schemas/auth";
 import { createUser } from "../services/authService";
 
 export const register = async (
-    req: Request<{}, {}, RegisterDTO>, res: Response
+    req: Request<{}, {}, RegisterDTO>, res: Response, next: NextFunction
 ): Promise<void> => {
     try {
-        const newUser = createUser(req.body);
+        const newUser = await createUser(req.body);
         res.status(201).json(newUser);
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Registration failed '});
+        next(err);
     }
 }  
