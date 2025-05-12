@@ -7,7 +7,8 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "typeRoots": ["src/types/**/*.ts"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
